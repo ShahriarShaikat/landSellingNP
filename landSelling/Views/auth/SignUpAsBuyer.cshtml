@@ -1,0 +1,285 @@
+﻿@model landSelling.Models.Entity.userBuyerModel
+@{
+    //ViewBag.Title = "SignUp";
+}
+
+
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+        <h2 id="slrbtn"><a href="/auth/SignUpAsSeller">As Seller</a> </h2>
+        <h2 class="active" id="byrbtn"><a  href="/auth/SignUpAsBuyer"> As Buyer </a></h2><br>
+
+
+        <form action="/auth/SignUpAsBuyer" method="POST" id="byr">
+            <table align="center">
+                <tr>
+                    <!-- <td>Username</td> -->
+                    <td>
+                        <input type="text" name="username" placeholder="Username" value="@Model.username"><br />
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td>Email</td> -->
+                    <td>
+                        <input type="email" name="email" placeholder="Email" value="@Model.email"><br />
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td>Full Name</td> -->
+                    <td>
+                        <input type="text" name="name" placeholder="Name" value="@Model.name">
+                        <br />
+                        @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td>Pasword</td> -->
+                    <td>
+                        <input type="password" name="password" placeholder="Password" value="@Model.password">
+                        <br />
+                        @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <!-- <td>Confirm Password</td> -->
+                    <td>
+                        <input type="password" name="password2" placeholder="Confirm Password" value="@Model.password2"><br />
+                        @Html.ValidationMessageFor(model => model.password2, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+                <tr>
+                    <!-- <td>Phone</td> -->
+                    <td><input type="text" name="occupation" placeholder="Occupation" value="@Model.occupation"></td>
+                </tr>
+                <tr>
+                    <!-- <td>Phone</td> -->
+                    <td><input type="number" name="netincome" placeholder="Net Income" value="@Model.netincome"></td>
+                </tr>
+                <tr>
+                    <!-- <td><a href="login.php">Login</a></td> -->
+                    <td><input type="submit" name="signup" value="Sign up"></td>
+                </tr>
+                <tr><td></td></tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<style>
+	html {
+		background-color: #56baed;
+	}
+
+	body {
+		font-family: "Poppins", sans-serif;
+		height: 100vh;
+	}
+
+
+	a {
+		color: #92badd;
+		display: inline-block;
+		text-decoration: none;
+		font-weight: 400;
+	}
+    #slrbtn, #byrbtn{
+        cursor:pointer;
+    }
+    #slrbtn a, #byrbtn a {
+        text-decoration: none;
+    }
+
+	#anchor {
+		color: #0d0d0d;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	h2 {
+		text-align: center;
+		font-size: 16px;
+		font-weight: 600;
+		text-transform: uppercase;
+		display: inline-block;
+		margin: 40px 8px 10px 8px;
+		color: #cccccc;
+	}
+
+	.wrapper {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		min-height: 100%;
+		padding: 20px;
+	}
+
+	#formContent {
+		-webkit-border-radius: 10px 10px 10px 10px;
+		border-radius: 10px 10px 10px 10px;
+		background: #fff;
+		padding: 30px;
+		width: 90%;
+		max-width: 450px;
+		position: relative;
+		padding: 0px;
+		-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+		box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+		text-align: center;
+	}
+
+	#formFooter {
+		background-color: #f6f6f6;
+		border-top: 1px solid #dce8f1;
+		padding: 25px;
+		text-align: center;
+		-webkit-border-radius: 0 0 10px 10px;
+		border-radius: 0 0 10px 10px;
+	}
+
+	h2.inactive {
+		color: #cccccc;
+	}
+
+	h2.active {
+		color: #0d0d0d;
+		border-bottom: 2px solid #5fbae9;
+	}
+
+    input[type=button],
+    input[type=submit],
+    input[type=reset],
+    input[type=reset]{
+        background-color: #56baed;
+        border: none;
+        color: white;
+        padding: 15px 80px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: 13px;
+        -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+        box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+        -webkit-border-radius: 5px 5px 5px 5px;
+        border-radius: 5px 5px 5px 5px;
+        margin: 5px 20px 40px 20px;
+    }
+
+	input[type=button]:hover,
+	input[type=submit]:hover,
+	input[type=reset]:hover {
+		background-color: #39ace7;
+	}
+
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=date],
+    input[type=number] {
+        background-color: #f6f6f6;
+        border: none;
+        color: #0d0d0d;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        width: 85%;
+        border: 2px solid #f6f6f6;
+        border-radius: 5px 5px 5px 5px;
+    }
+
+	input[type=text]:focus {
+		background-color: #fff;
+		border-bottom: 2px solid #5fbae9;
+	}
+
+@*	input[type=text]: placeholder {
+		color: #cccccc;
+	}*@
+
+
+	input[type=password]:focus {
+		background-color: #fff;
+		border-bottom: 2px solid #5fbae9;
+	}
+
+        input[type=number]:focus {
+            background-color: #fff;
+            border-bottom: 2px solid #5fbae9;
+        }
+
+        input[type=number]:focus {
+            background-color: #fff;
+            border-bottom: 2px solid #5fbae9;
+        }
+
+@*	input[type=password]:placeholder {
+		color: #cccccc;
+	}*@
+
+
+
+	.underlineHover:after {
+		display: block;
+		left: 0;
+		bottom: -10px;
+		width: 0;
+		height: 2px;
+		background-color: #56baed;
+		content: "";
+		transition: width 0.2s;
+	}
+
+@*	.underlineHover:hover {
+		color: #0d0d0d;
+	}*@
+
+	.underlineHover:hover:after {
+		width: 100%;
+	}
+
+	*:focus {
+		outline: none;
+	}
+
+
+	* {
+		box-sizing: border-box;
+	}
+</style>
+
+
+@*<script>
+        let slr = document.getElementById('slr');
+        let byr = document.getElementById('byr');
+        //slr.style.display = "none";
+        document.getElementById("slrbtn").classList.add('active');
+        byr.style.display = "none";
+        document.getElementById("slrbtn").addEventListener("click", function () {
+            byr.style.display = "none";
+            slr.style.display = "block";
+            document.getElementById("slrbtn").classList.add('active');
+            document.getElementById("byrbtn").classList.remove('active');
+            console.log('slr');
+        });
+        document.getElementById("byrbtn").addEventListener("click", function () {
+            slr.style.display = "none";
+            byr.style.display = "block";
+            document.getElementById("byrbtn").classList.add('active');
+            document.getElementById("slrbtn").classList.remove('active');
+            console.log('byr');
+        });
+
+    </script>*@
+@*   </div>
+    </div>*@
