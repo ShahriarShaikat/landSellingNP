@@ -80,6 +80,7 @@
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="status" Type="varchar" MaxLength="20" />
   </EntityType>
   <Association Name="FK_administration_user">
     <End Role="user" Type="Self.user" Multiplicity="1" />

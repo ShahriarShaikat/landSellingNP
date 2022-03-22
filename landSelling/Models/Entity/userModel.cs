@@ -15,5 +15,6 @@ namespace landSelling.Models.Entity
         [Required(ErrorMessage = "Please provide your password")]
         public string password { get; set; }
         public string role { get; set; }
+        public string status { get; set; }
     }
 }

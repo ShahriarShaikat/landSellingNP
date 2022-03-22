@@ -92,6 +92,7 @@
     <NavigationProperty Name="posts" Relationship="Self.FK_post_user" FromRole="user" ToRole="post" />
     <NavigationProperty Name="requests" Relationship="Self.FK_request_user" FromRole="user" ToRole="request" />
     <NavigationProperty Name="sellers" Relationship="Self.FK_seller_user" FromRole="user" ToRole="seller" />
+    <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK_administration_user">
     <End Role="user" Type="Self.user" Multiplicity="1" />

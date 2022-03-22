@@ -82,6 +82,7 @@
     <EntitySetMapping Name="users">
       <EntityTypeMapping TypeName="landSellingModel.user">
         <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />

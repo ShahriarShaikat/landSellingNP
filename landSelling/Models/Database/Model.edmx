@@ -32,13 +32,19 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="900" Nullable="false" />
           <Property Name="location" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="quantity" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="mark" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="image" Type="varchar" MaxLength="100" />
+          <Property Name="price" Type="int" Nullable="false" />
+          <Property Name="propertyType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="mark" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="area" Type="int" Nullable="false" />
+          <Property Name="beds" Type="int" Nullable="false" />
+          <Property Name="baths" Type="int" Nullable="false" />
+          <Property Name="garage" Type="int" Nullable="false" />
           <Property Name="uid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="request">
@@ -48,6 +54,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="postid" Type="int" Nullable="false" />
           <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="bidprice" Type="int" Nullable="false" />
           <Property Name="status" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="mark" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
@@ -85,6 +92,7 @@
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <Association Name="FK_administration_user">
           <End Role="user" Type="Self.user" Multiplicity="1" />
@@ -224,16 +232,22 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="mark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="900" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" Nullable="false" />
+          <Property Name="propertyType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mark" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="area" Type="Int32" Nullable="false" />
+          <Property Name="beds" Type="Int32" Nullable="false" />
+          <Property Name="baths" Type="Int32" Nullable="false" />
+          <Property Name="garage" Type="Int32" Nullable="false" />
           <Property Name="uid" Type="Int32" Nullable="false" />
           <NavigationProperty Name="user" Relationship="Self.FK_post_user" FromRole="post" ToRole="user" />
           <NavigationProperty Name="requests" Relationship="Self.FK_request_post" FromRole="post" ToRole="request" />
-          <Property Name="location" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="request">
           <Key>
@@ -247,6 +261,7 @@
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="post" Relationship="Self.FK_request_post" FromRole="request" ToRole="post" />
           <NavigationProperty Name="user" Relationship="Self.FK_request_user" FromRole="request" ToRole="user" />
+          <Property Name="bidprice" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="seller">
           <Key>
@@ -282,6 +297,7 @@
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="administrations" Relationship="Self.FK_administration_user" FromRole="user" ToRole="administration" />
           <NavigationProperty Name="buyers" Relationship="Self.FK_buyer_user" FromRole="user" ToRole="buyer" />
           <NavigationProperty Name="posts" Relationship="Self.FK_post_user" FromRole="user" ToRole="post" />
@@ -360,7 +376,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="landSellingEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="landSellingEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="administrations" EntityType="Self.administration" />
           <EntitySet Name="buyers" EntityType="Self.buyer" />
           <EntitySet Name="posts" EntityType="Self.post" />
@@ -398,7 +414,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="landSellingModelStoreContainer" CdmEntityContainer="landSellingEntities">
+        <EntityContainerMapping StorageEntityContainer="landSellingModelStoreContainer" CdmEntityContainer="landSellingEntity">
           <EntitySetMapping Name="administrations">
             <EntityTypeMapping TypeName="landSellingModel.administration">
               <MappingFragment StoreEntitySet="administration">
@@ -426,14 +442,20 @@
           <EntitySetMapping Name="posts">
             <EntityTypeMapping TypeName="landSellingModel.post">
               <MappingFragment StoreEntitySet="post">
-                <ScalarProperty Name="location" ColumnName="location" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="propertyType" ColumnName="propertyType" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="mark" ColumnName="mark" />
                 <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="area" ColumnName="area" />
+                <ScalarProperty Name="beds" ColumnName="beds" />
+                <ScalarProperty Name="baths" ColumnName="baths" />
+                <ScalarProperty Name="garage" ColumnName="garage" />
                 <ScalarProperty Name="uid" ColumnName="uid" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -441,6 +463,7 @@
           <EntitySetMapping Name="requests">
             <EntityTypeMapping TypeName="landSellingModel.request">
               <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="bidprice" ColumnName="bidprice" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="postid" ColumnName="postid" />
                 <ScalarProperty Name="userid" ColumnName="userid" />
@@ -484,6 +507,7 @@
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

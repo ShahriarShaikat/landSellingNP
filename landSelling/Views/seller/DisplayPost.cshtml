@@ -1,123 +1,111 @@
-﻿
+﻿@model List<landSelling.Models.Database.post>
 @{
     ViewBag.Title = "DisplayPost";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<body>
-
-    <div class="header">
-        <h2>Posted Advertisements</h2>
-    </div>
-
-    <!--<div class="card" style="background-color:green;padding:25px;">
-        <h2>-->
-    @* title*@
-    <!--</h2>
-    <h5>-->
-    @*date*@
-    <!--</h5>
-    <h3>-->
-    @*Quantity*@
-    <!--</h3>
-    <h3>-->
-    @*location*@
-    <!--</h3>
-    <h1>-->
-    @*description*@
-    <!--</h1>
-    </div>-->
-    <!--<div>
-        <h1>-->
-    @* title*@
-    <!--</h1>
-    <h5>-->
-    @*date*@
-    <!--</h5>
-    <h3>-->
-    @* Quantity*@
-    <!--</h3>
-    <h3>-->
-    @* location*@
-    <!--</h3>
-    <h2>-->
-    @* description*@
-    <!--</h2>
-    </div>-->
-</body>
-
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: Arial;
-        padding: 20px;
-        background: #f1f1f1;
-    }
-
-    .header {
-        padding: 30px;
-        font-size: 40px;
-        text-align: center;
-        background: white;
-    }
-</style>
-
-
-@foreach (var p in Model)
-{
-    <div id="mainDiv">
-        <div id="div1" style="background-color: #DAD7D7;
-        padding: 25px;">
-            @*<img src="https://ibb.co/y0nWdP5" alt=""><br>*@
-            <img src="https://i.ibb.co/nrsz6mf/land.jpg" alt="land" border="0">
-            @* <h1 style="text-align:center;">@p.title</h1>
-                <h5 style="float:right; padding-right:10px">@p.date</h5>
-                <h4>@p.quantity</h4>
-                <h4>@p.location</h4>
-                <h2>@p.description</h2>
-                <brrrrrrrrrrrrr />*@
-            <h2 style="text-align:center;">@p.title</h2>
-            <h4> <b><i>Plot Area:</i></b> @p.quantity</h4>
-            <h4><b><i>Location:</i></b> @p.location</h4>
-            <h2>@p.description</h2>
-            <h5 style="float:right; padding-right:10px"><b><i>Posted on</i></b> @p.date</h5>
-            <br /><br /><br />
-            <a href="" class="buy">Bid Price</a>
+<section class="intro-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="title-single-box">
+                    <h1 class="title-single">Our Amazing Properties</h1>
+                    <span class="color-text-a">Grid Properties</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Properties Grid
+                        </li>
+                    </ol>
+                </nav>
+            </div>
         </div>
     </div>
-}
+</section>
 
 
-<style>
-    #mainDiv {
-        margin: 10px;
-        padding: 10px;
-        margin-left: 230px;
-    }
+<!--/ Property Grid Star /-->
+<section class="property-grid grid">
+    <div class="container">
+        <div class="col-sm-12">
+            <div class="grid-option">
+                <form>
+                    <select class="custom-select">
+                        <option selected>All</option>
+                        <option value="1">New to Old</option>
+                        <option value="2">For Rent</option>
+                        <option value="3">For Sale</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+        <div class="row">
 
-    #div1 {
-        padding: 20px;
-        background-color: lightgray;
-        border-radius: 10px;
-        margin-right: 220px;
-    }
 
-    .img {
-        margin-left: 50px;
-        height: 30px;
-        width: 30px;
-        border-radius: 100px;
-    }
+            @foreach (var item in Model)
+            {
+            <div class="col-md-4">
+                <div class="card-box-a card-shadow">
+                    <div class="img-box-a">
+                        <img src="~/Content/Frontend/img/property-1.jpg" alt="" class="img-a img-fluid">
+                    </div>
+                    <div class="card-overlay">
+                        <div class="card-overlay-a-content">
+                            <div class="card-header-a">
+                                <h2 class="card-title-a">
+                                    <a href="/post/SingleProperty/@item.id">
+                                        @item.title
+                                    </a>
+                                </h2>
+                            </div>
+                            <div class="card-body-a">
+                                <div class="price-box d-flex">
+                                    <span class="price-a">@item.propertyType | $ @item.price</span>
+                                </div>
+                                <a href="/post/SingleProperty/@item.id" class="link-a">
+                                    Click here to view
+                                    <span class="ion-ios-arrow-forward"></span>
+                                </a>
+                            </div>
+                            <div class="card-footer-a">
+                                <ul class="card-info d-flex justify-content-around">
+                                    <li>
+                                        <h4 class="card-info-title">Area</h4>
+                                        <span>
+                                            @item.area m
+                                            <sup>2</sup>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Beds</h4>
+                                        <span>@item.beds</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Baths</h4>
+                                        <span>@item.baths</span>
+                                    </li>
+                                    <li>
+                                        <h4 class="card-info-title">Garages</h4>
+                                        <span>@item.garage</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
 
-    .buy {
-        background-color: dodgerblue;
-        color: white;
-        padding: 1em 1.5em;
-        text-decoration: none;
-        text-transform: uppercase;
-        margin-left: 260px;
-    }
-</style>
+
+
+
+        </div>
+    </div>
+</section>
+<!--/ Property Grid End /-->

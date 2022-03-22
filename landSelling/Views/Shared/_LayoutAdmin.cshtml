@@ -41,7 +41,12 @@
                             <!--change to offline or busy as needed-->
                         </div>
                         <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
-                            <span class="font-weight-semibold mb-1 mt-2 text-center">Antonio Olson</span>
+                            <span class="font-weight-semibold mb-1 mt-2 text-center">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    @User.Identity.Name;
+                                }
+                            </span>
                         </div>
                     </a>
                 </li>
@@ -60,10 +65,10 @@
                     <div class="collapse" id="ui-basic">
                         <ul class="nav flex-column sub-menu">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Add User</a>
+                                <a class="nav-link" href="/admin/AddUser">Add User</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">View User</a>
+                                <a class="nav-link" href="/admin/ViewUser">View User</a>
                             </li>
                         </ul>
                     </div>
@@ -72,6 +77,18 @@
                     <a class="nav-link" href="/admin/ViewPost">
                         <i class="fa fa-clipboard" aria-hidden="true"></i>
                         <span class="menu-title">View Post</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/BlockUser">
+                        <i class="fa fa-clipboard" aria-hidden="true"></i>
+                        <span class="menu-title">Block User</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/SignOut">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <span class="menu-title">Sign Out</span>
                     </a>
                 </li>
 

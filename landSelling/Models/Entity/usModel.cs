@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
+
 namespace landSelling.Models.Entity
 {
-    public class usModel : userModel
+    public class usModel : sellerModel
     {
-        public List<sellerModel> sellerList { set; get; }
-
-        public usModel()
-        {
-            sellerList = new List<sellerModel>();
-        }
+        public int userid { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string role { get; set; }
 
     }
 }

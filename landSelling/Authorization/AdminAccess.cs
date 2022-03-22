@@ -13,6 +13,7 @@ namespace landSelling.Authorization
         {
 
             var auth = false;
+            //if (httpContext.User.Identity.Name == null)
             if (httpContext.Session["UserName"] != null)
             {
                 auth = true;

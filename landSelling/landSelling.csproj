@@ -135,53 +135,71 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Authorization\AdminAccess.cs" />
+    <Compile Include="Authorization\buyerAccess.cs" />
+    <Compile Include="Authorization\buyerSellerAccess.cs" />
+    <Compile Include="Authorization\onlyAdminAccess.cs" />
     <Compile Include="Authorization\sellerAccess.cs" />
     <Compile Include="Controllers\authController.cs" />
     <Compile Include="Controllers\adminController.cs" />
+    <Compile Include="Controllers\buyerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\postController.cs" />
     <Compile Include="Controllers\sellerController.cs" />
+    <Compile Include="Email\EmailClass.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\administration.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\buyer.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\Model1.Context.cs">
+    <Compile Include="Models\Database\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Database\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Models\Database\post.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\request.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\seller.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\sysdiagram.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\user.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\admin.cs" />
+    <Compile Include="Models\Entity\buyerModel.cs" />
+    <Compile Include="Models\Entity\contactModel.cs" />
+    <Compile Include="Models\Entity\OTP.cs" />
     <Compile Include="Models\Entity\postModel.cs" />
     <Compile Include="Models\Entity\postUserModel.cs" />
+    <Compile Include="Models\Entity\requestModel.cs" />
     <Compile Include="Models\Entity\sellerModel.cs" />
+    <Compile Include="Models\Entity\ubModel.cs" />
+    <Compile Include="Models\Entity\userAdminModel.cs" />
     <Compile Include="Models\Entity\userBuyerModel.cs" />
     <Compile Include="Models\Entity\userModel.cs" />
     <Compile Include="Models\Entity\userSellerModel.cs" />
@@ -198,18 +216,97 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\Frontend\contactform\contactform.js" />
+    <Content Include="Content\Frontend\contactform\Readme.txt" />
+    <Content Include="Content\Frontend\css\scss-files.txt" />
+    <Content Include="Content\Frontend\css\style.css" />
+    <Content Include="Content\Frontend\img\about-1.jpg" />
+    <Content Include="Content\Frontend\img\about-2.jpg" />
+    <Content Include="Content\Frontend\img\agent-1.jpg" />
+    <Content Include="Content\Frontend\img\agent-2.jpg" />
+    <Content Include="Content\Frontend\img\agent-3.jpg" />
+    <Content Include="Content\Frontend\img\agent-4.jpg" />
+    <Content Include="Content\Frontend\img\agent-5.jpg" />
+    <Content Include="Content\Frontend\img\agent-6.jpg" />
+    <Content Include="Content\Frontend\img\agent-7.jpg" />
+    <Content Include="Content\Frontend\img\apple-touch-icon.png" />
+    <Content Include="Content\Frontend\img\author-1.jpg" />
+    <Content Include="Content\Frontend\img\author-2.jpg" />
+    <Content Include="Content\Frontend\img\favicon.png" />
+    <Content Include="Content\Frontend\img\mini-testimonial-1.jpg" />
+    <Content Include="Content\Frontend\img\mini-testimonial-2.jpg" />
+    <Content Include="Content\Frontend\img\plan2.jpg" />
+    <Content Include="Content\Frontend\img\post-1.jpg" />
+    <Content Include="Content\Frontend\img\post-2.jpg" />
+    <Content Include="Content\Frontend\img\post-3.jpg" />
+    <Content Include="Content\Frontend\img\post-4.jpg" />
+    <Content Include="Content\Frontend\img\post-5.jpg" />
+    <Content Include="Content\Frontend\img\post-6.jpg" />
+    <Content Include="Content\Frontend\img\post-7.jpg" />
+    <Content Include="Content\Frontend\img\post-single-1.jpg" />
+    <Content Include="Content\Frontend\img\post-single-2.jpg" />
+    <Content Include="Content\Frontend\img\property-1.jpg" />
+    <Content Include="Content\Frontend\img\property-10.jpg" />
+    <Content Include="Content\Frontend\img\property-2.jpg" />
+    <Content Include="Content\Frontend\img\property-3.jpg" />
+    <Content Include="Content\Frontend\img\property-4.jpg" />
+    <Content Include="Content\Frontend\img\property-5.jpg" />
+    <Content Include="Content\Frontend\img\property-6.jpg" />
+    <Content Include="Content\Frontend\img\property-7.jpg" />
+    <Content Include="Content\Frontend\img\property-8.jpg" />
+    <Content Include="Content\Frontend\img\property-9.jpg" />
+    <Content Include="Content\Frontend\img\slide-1.jpg" />
+    <Content Include="Content\Frontend\img\slide-2.jpg" />
+    <Content Include="Content\Frontend\img\slide-3.jpg" />
+    <Content Include="Content\Frontend\img\slide-about-1.jpg" />
+    <Content Include="Content\Frontend\img\testimonial-1.jpg" />
+    <Content Include="Content\Frontend\img\testimonial-2.jpg" />
+    <Content Include="Content\Frontend\js\main.js" />
+    <Content Include="Content\Frontend\lib\animate\animate.css" />
+    <Content Include="Content\Frontend\lib\animate\animate.min.css" />
+    <Content Include="Content\Frontend\lib\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Frontend\lib\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Frontend\lib\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Frontend\lib\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Frontend\lib\easing\easing.js" />
+    <Content Include="Content\Frontend\lib\easing\easing.min.js" />
+    <Content Include="Content\Frontend\lib\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Frontend\lib\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Frontend\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Frontend\lib\ionicons\css\ionicons.css" />
+    <Content Include="Content\Frontend\lib\ionicons\css\ionicons.min.css" />
+    <Content Include="Content\Frontend\lib\ionicons\fonts\ionicons.svg" />
+    <Content Include="Content\Frontend\lib\jquery\jquery-migrate.min.js" />
+    <Content Include="Content\Frontend\lib\jquery\jquery.min.js" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Content\Frontend\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Content\Frontend\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Content\Frontend\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Content\Frontend\lib\popper\popper.min.js" />
+    <Content Include="Content\Frontend\lib\scrollreveal\scrollreveal.js" />
+    <Content Include="Content\Frontend\lib\scrollreveal\scrollreveal.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Database\Model1.Context.tt">
+    <Content Include="Models\Database\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Database\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Database\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
@@ -235,12 +332,25 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Models\Database\Model1.edmx">
+    <Content Include="Content\Frontend\lib\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Frontend\lib\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Content\Frontend\lib\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Frontend\lib\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Frontend\lib\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Frontend\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Frontend\lib\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\Frontend\lib\ionicons\fonts\ionicons.eot" />
+    <Content Include="Content\Frontend\lib\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Content\Frontend\lib\ionicons\fonts\ionicons.woff" />
+    <Content Include="Content\Frontend\lib\ionicons\fonts\ionicons.woff2" />
+    <Content Include="Content\Frontend\lib\owlcarousel\LICENSE" />
+    <Content Include="Content\Frontend\lib\popper\popper.min.js.map.json" />
+    <EntityDeploy Include="Models\Database\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Database\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <Content Include="Models\Database\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -334,7 +444,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_OLD-Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -349,7 +459,6 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Shared\_adminLayout.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\admin\Dashboard.cshtml" />
     <Content Include="Views\auth\SignUpAsBuyer.cshtml" />
@@ -359,9 +468,21 @@
     <Content Include="Views\seller\DisplayPost.cshtml" />
     <Content Include="Views\seller\AddPost.cshtml" />
     <Content Include="Views\seller\ViewProfile.cshtml" />
+    <Content Include="Views\admin\AddUser.cshtml" />
+    <Content Include="Views\admin\userEdit.cshtml" />
+    <Content Include="Views\admin\ViewUser.cshtml" />
+    <Content Include="Views\buyer\ViewBuyerProfile.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\auth\OtpValidate.cshtml" />
+    <Content Include="Views\post\SingleProperty.cshtml" />
+    <Content Include="Views\post\BuyerBids.cshtml" />
+    <Content Include="Views\seller\MyPost.cshtml" />
+    <Content Include="Views\seller\viewPostDetails.cshtml" />
+    <Content Include="Views\admin\BlockUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadedFiles\" />
     <Folder Include="Views\dashboard\" />
   </ItemGroup>
   <ItemGroup>

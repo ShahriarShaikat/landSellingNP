@@ -1,4 +1,4 @@
-﻿@model IEnumerable<landSelling.Models.Database.post>
+﻿@model List<landSelling.Models.Database.post>
 @{
     ViewBag.Title = "ViewPost";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -24,7 +24,7 @@
                     <th scope="row"><a style="text-decoration:none;" href="/admin/PostDetails/@item.id">Details</a></th>
                     <td>@item.title</td>
                     <td>@item.description</td>
-                    <td>@item.quantity</td>
+                    <td>@item.price</td>
                     <td>@item.status</td>
                     <td>@item.date</td>
                     <td>@item.user.username</td>

@@ -11,9 +11,11 @@ namespace landSelling.Models.Entity
     {
         public int id { get; set; }
         public int uid { get; set; }
+        [StringLength(50, ErrorMessage = "Name lenght must not exceed 50")]
 
         [Required(ErrorMessage = "Field couldn't be empty!")]
         public string name { get; set; }
+        [StringLength(50, ErrorMessage = "Name lenght must not exceed 50")]
 
         [Required(ErrorMessage = "Field couldn't be empty!")]
         public string email { get; set; }
@@ -29,6 +31,7 @@ namespace landSelling.Models.Entity
         public string facebooklink { get; set; }
         public Nullable<int> whatsappno { get; set; }
         public string occupation { get; set; }
+        [StringLength(10, ErrorMessage = "Name lenght must not exceed 10")]
 
         [Required(ErrorMessage = "Please provide your Username")]
         public string username { get; set; }

@@ -20,6 +20,7 @@ namespace landSelling.Models.Database
         public string status { get; set; }
         public string mark { get; set; }
         public System.DateTime date { get; set; }
+        public int bidprice { get; set; }
     
         public virtual post post { get; set; }
         public virtual user user { get; set; }

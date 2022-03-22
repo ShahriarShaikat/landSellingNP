@@ -17,7 +17,7 @@ namespace landSelling.Authorization
             {
                 auth = true;
             }
-            if (auth && (httpContext.Session["UserType"].Equals("seller") || httpContext.Session["UserType"].Equals("employee")))
+            if (auth && httpContext.Session["UserType"].Equals("seller") )
             {
                 return true;
             }
